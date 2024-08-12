@@ -1,9 +1,3 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <vector>
+#include "headers.h"
 
-using namespace std;
-
-vector<vector<int>> readDesign(const char*); 
+data_t* readData(const char* filename);

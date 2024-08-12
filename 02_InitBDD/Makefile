@@ -1,7 +1,7 @@
-CC = g++
-SRCs := $(wildcard *.cpp)
+CC = gcc
+SRCs := $(wildcard *.c)
 
-OBJs := $(SRCs:.cpp=.o)
+OBJs := $(SRCs:.c=.o)
 
 .PHONY: all clean
 .DEFAULT_GOAL: all
