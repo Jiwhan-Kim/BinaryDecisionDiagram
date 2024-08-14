@@ -9,7 +9,6 @@ OBJs := $(SRCs:.cpp=.o)
 all: main.out
 
 main.out: $(OBJs)
-	# DS_timer.o is added explicitly
 	$(CC) -o $@ $^
 
 %.o: %.cu
