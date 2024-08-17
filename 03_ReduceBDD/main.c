@@ -1,6 +1,7 @@
 #include "createBDD.h"
 #include "initBDD.h"
 #include "printBDD.h"
+#include "reduceBDD.h"
 
 int main(int argc, char *argv[]) {
     char filename[256] = "../01_4bitFA/S0.txt";
@@ -15,6 +16,12 @@ int main(int argc, char *argv[]) {
     
     node_t* root = createBDD(data, sequence); 
     
+    printBDD(root);
+
+    printf("Reducing BDD\n");
+    reduceBDD(root);
+    printf("Reducing BDD done\n");
+
     printBDD(root);
     return 0;
 }

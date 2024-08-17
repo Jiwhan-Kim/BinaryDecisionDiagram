@@ -17,6 +17,7 @@ uint32_t const twos_a[32] = {
 node_t* initnode(int num) {
     node_t* node = (node_t*)malloc(sizeof(node_t));
     node->n = num;
+    node->identical = 0; // not checked
     node->left = NULL;
     node->right = NULL;
     return node;

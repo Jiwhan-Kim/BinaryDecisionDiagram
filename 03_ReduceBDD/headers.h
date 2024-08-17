@@ -15,6 +15,7 @@ typedef struct data_tt{
 
 typedef struct node_tt{
     int n;
+    int identical; // 0 for not-checked, 1 for identical, -1 for not identical
     struct node_tt* left;
     struct node_tt* right;
 } node_t;
