@@ -1,6 +1,7 @@
 #include "printBDD.h"
 
 uint32_t getNodes(node_t* root) {
+    printf("root->n: %d\n", root->n);
     if (root->left == NULL && root->right == NULL) {
         return 0;
     }
