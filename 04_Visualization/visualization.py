@@ -1,93 +1,72 @@
 from graphviz import Digraph
 
-# 파일 경로
-file_path = '../Submit/ReducedBDD/output_S1.txt'
+def makeGraphToImage(input_file_path):
 
-outputFileName = file_path.split('/')[-1].split('.')[0]
+  # 파일 경로
+  # file_path = '../Submit/ReducedBDD/output_S1.txt'
 
-# 파일 열기 및 내용 읽기
-try:
-  with open(file_path, 'r') as file:
-    content = file.read()
-except FileNotFoundError:
-  print(f"파일을 찾을 수 없습니다: {file_path}")
-except IOError as e:
-  print(f"파일을 읽는 중 오류가 발생했습니다: {e}")
+  file_path = input_file_path
 
-informations = content.split('\n')
+  outputFileName = file_path.split('/')[-1].split('.')[0]
 
-totalVariables = 0
-totalNodes = 0
-totalTreeNodes = 0
-treeNodes = []
+  # 파일 열기 및 내용 읽기
+  try:
+    with open(file_path, 'r') as file:
+      content = file.read()
+  except FileNotFoundError:
+    print(f"파일을 찾을 수 없습니다: {file_path}")
+  except IOError as e:
+    print(f"파일을 읽는 중 오류가 발생했습니다: {e}")
 
-for information in informations:
-  if information == '':
-    continue
-  
-  order = information.split(' ')
+  informations = content.split('\n')
 
-  category = order[0]
-  node = order[1]
+  totalVariables = 0
+  totalNodes = 0
+  totalTreeNodes = 0
+  treeNodes = []
 
-  if category == 'TotalVariables':
-    totalVariables = int(node)
-  elif category == 'TotalNodes':
-    totalNodes = int(node)
-  elif category == 'TotalTreeNodes':
-    totalTreeNodes = int(node)
-  else:
-    treeNodes.append(node)
+  for information in informations:
+    if information == '':
+      continue
+    
+    order = information.split(' ')
 
-g = Digraph()
+    category = order[0]
+    node = order[1]
 
-for (index, node) in enumerate(treeNodes):
-  if node == 'X':
-    continue
-  g.node(node + str(index), node)
+    if category == 'TotalVariables':
+      totalVariables = int(node)
+    elif category == 'TotalNodes':
+      totalNodes = int(node)
+    elif category == 'TotalTreeNodes':
+      totalTreeNodes = int(node)
+    else:
+      treeNodes.append(node)
 
-for (index, node) in enumerate(treeNodes):
-  if node == 'X':
-    continue
+  g = Digraph()
 
-  if index * 2 + 1 >= totalTreeNodes:
-    continue
+  for (index, node) in enumerate(treeNodes):
+    if node == 'X':
+      continue
+    g.node(node + str(index), node)
 
-  leftIndex = index * 2 + 1
-  rightIndex = index * 2 + 2
+  for (index, node) in enumerate(treeNodes):
+    if node == 'X':
+      continue
 
-  left = treeNodes[leftIndex]
-  right = treeNodes[rightIndex]
+    if index * 2 + 1 >= totalTreeNodes:
+      continue
 
-  if left != 'X':
-    g.edge(node + str(index), left + str(leftIndex), color='green')
+    leftIndex = index * 2 + 1
+    rightIndex = index * 2 + 2
 
-  if right != 'X':
-    g.edge(node + str(index), right + str(rightIndex), color='red')
+    left = treeNodes[leftIndex]
+    right = treeNodes[rightIndex]
 
-g.render(outputFileName, format='jpeg', cleanup=False)
+    if left != 'X':
+      g.edge(node + str(index), left + str(leftIndex), color='green')
 
-  
+    if right != 'X':
+      g.edge(node + str(index), right + str(rightIndex), color='red')
 
-
-
-"""
-# Digraph 객체 생성
-g = Digraph()
-
-# 노드 추가
-g.node('A', 'Start')
-g.node('B', 'Process')
-g.node('C', 'End')
-
-# 엣지(간선) 추가
-g.edge('A', 'B', 'Step 1')
-g.edge('B', 'C', 'Step 2')
-
-# 결과를 PDF 파일로 저장
-g.render('example_graph', format='jpeg', cleanup=False)
-
-# # 그래프를 보기 위해 PDF 파일 열기
-# from IPython.display import display, Image
-# display(Image(filename='example_graph.pdf'))
-"""
+  g.render(outputFileName, format='jpeg', cleanup=False)
