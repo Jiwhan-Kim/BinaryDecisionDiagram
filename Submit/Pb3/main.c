@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
     char filename[256] = "input.txt";
     int mode = 0; // 0 - original BDD, 1 - reduced BDD
     if (argc >= 2) strcpy(filename, argv[1]);
-    if (argc >= 3) mode = atoi(argv[2]);
+    // if (argc >= 3) mode = atoi(argv[2]);
     if (mode != 0 && mode != 1) {
         printf("Invalid mode\n");
         return 1;

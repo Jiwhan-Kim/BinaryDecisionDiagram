@@ -1,0 +1,6 @@
+TotalVariables 3
+TotalNodes 1
+TotalTreeNodes 3
+N a
+B 1
+B 0
