@@ -21,6 +21,11 @@ typedef struct node_tt{
     struct node_tt* right;
 } node_t;
 
+typedef struct {
+    int type; // 0 for no node, 1 for node, 2 for boolean
+    int value; // node number or boolean value
+} format_t;
+
 #endif
 
 

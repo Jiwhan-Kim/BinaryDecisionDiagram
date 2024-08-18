@@ -38,6 +38,7 @@ int main(int argc, char* argv[]) {
     fS1.close();
 
     ofstream fS2("S2.txt", ios::out | ios::binary);
+    fS2 << "a3 a2 a1 a0 b3 b2 b1 b0 y" << endl;
     for (int i = 0 ; i < 256; i++) {
         fS2 << ((truth[i][0] >> 3) & 1) << " " << ((truth[i][0] >> 2) & 1) << " " << ((truth[i][0] >> 1) & 1) << " " << (truth[i][0] & 1);
         fS2 << " ";
