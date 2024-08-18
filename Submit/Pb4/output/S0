@@ -1,0 +1,15 @@
+digraph {
+	a00 [label=a0]
+	b01 [label=b0]
+	b02 [label=b0]
+	03 [label=0]
+	14 [label=1]
+	15 [label=1]
+	06 [label=0]
+	a00 -> b01 [color=green]
+	a00 -> b02 [color=red]
+	b01 -> 03 [color=green]
+	b01 -> 14 [color=red]
+	b02 -> 15 [color=green]
+	b02 -> 06 [color=red]
+}

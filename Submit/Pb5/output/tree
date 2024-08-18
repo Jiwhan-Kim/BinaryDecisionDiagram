@@ -1,0 +1,7 @@
+digraph {
+	a0 [label=a]
+	11 [label=1]
+	02 [label=0]
+	a0 -> 11 [color=green]
+	a0 -> 02 [color=red]
+}
