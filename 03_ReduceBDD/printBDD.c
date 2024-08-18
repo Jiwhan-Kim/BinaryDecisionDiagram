@@ -1,7 +1,6 @@
 #include "printBDD.h"
 
 uint32_t getNodes(node_t* root) {
-    printf("Node Cord: %d, value: %d\n", root->cord, root->n);
     if ((root->left == NULL) && (root->right == NULL)) {
         return 0;
     }
