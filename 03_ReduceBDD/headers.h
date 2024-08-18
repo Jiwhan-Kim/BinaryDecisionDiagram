@@ -11,11 +11,12 @@
 typedef struct data_tt{
     int cnt; // number of columns
     int matrix[0x10000][MAX_COLS + 1];
+    char names[MAX_COLS][0x10]; // maximum 15 characters
 } data_t;
 
 typedef struct node_tt{
     int n;
-    int identical; // 0 for not-checked, 1 for identical, -1 for not identical
+    int cord;
     struct node_tt* left;
     struct node_tt* right;
 } node_t;

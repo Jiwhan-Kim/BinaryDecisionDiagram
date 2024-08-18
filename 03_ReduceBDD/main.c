@@ -15,13 +15,12 @@ int main(int argc, char *argv[]) {
     uint32_t sequence[MAX_COLS] = {0, 1, 2, 3, 4, 5, 6, 7};
     
     node_t* root = createBDD(data, sequence); 
-    
-    printBDD(root);
 
     printf("Reducing BDD\n");
     reduceBDD(root);
     printf("Reducing BDD done\n");
 
     printBDD(root);
+    printVisualFormat(root, data); 
     return 0;
 }

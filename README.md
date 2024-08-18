@@ -27,4 +27,6 @@ The `main.c` will create a reduced BDD.
 
 The `reduceBDD()` on `./03_ReduceBDD/reduceBDD.c` will reduce a tree made by `createBDD()`. As a result, the least-significant-bit of 4-bit Full Adder will have only 3 nodes.
 
+The `printVisualFormat()` on the same route will print a tree starting the index 1. Index 1 will indicate the one node on the top. Index 2, 3 will indicate each left and right node of the root node. Multiply 2 on the coordinate of parent nodes will indicate left-child node, and add 1 on it to indicate right-child node.
+
 

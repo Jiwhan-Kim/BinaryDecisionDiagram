@@ -25,6 +25,7 @@ data_t* readData(const char* filename) {
     if (fgets(line, sizeof(line), fp)) {
         char* token = strtok(line, " ");
         while (token != NULL) {
+            strcpy(data->names[data->cnt], token);
             data->cnt += 1;
             token = strtok(NULL, " ");
         }

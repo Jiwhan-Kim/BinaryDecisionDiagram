@@ -11,12 +11,17 @@ int isIdentical(node_t* left, node_t* right) {
         return 0;
     }
 
-
-    
     int isLeftIdentical = isIdentical(left->left, right->left);
     int isRightIdentical = isIdentical(left->right, right->right);
     return isLeftIdentical && isRightIdentical;
 
+}
+
+void updateCord(node_t* root, int cord) {
+    if (root == NULL) return;
+    root->cord = cord;
+    updateCord(root->left, cord * 2);
+    updateCord(root->right, cord * 2 + 1);
 }
 
 // rec function
@@ -26,14 +31,16 @@ void reduceBDD(node_t* root) {
     reduceBDD(root->right);
     
     if (isIdentical(root->left, root->right)) {
-        node_t* old = root->right;
-        clearBDD(root->left);
+        node_t* old = root->left;
+        clearBDD(root->right);
         root->n = old->n;
         root->left = old->left;
         root->right = old->right;
         free(old);
+        updateCord(root, root->cord);
     }
 }
+
 
 void clearBDD(node_t* root) {
     if (root->left != NULL) {

@@ -14,40 +14,34 @@ uint32_t const twos_a[32] = {
     0x10000000, 0x20000000, 0x40000000, 0x80000000
 };
 
-node_t* initnode(int num) {
+node_t* initnode(int num, int cord) {
     node_t* node = (node_t*)malloc(sizeof(node_t));
     node->n = num;
-    node->identical = 0; // not checked
+    node->cord = cord;
     node->left = NULL;
     node->right = NULL;
     return node;
 }
 
-void recTree(int level, uint32_t dataidx, node_t* root) {
+void recTree(int level, int cord, uint32_t dataidx, node_t* root) {
     if (level == data_ref->cnt - 1) {
-        root->left = initnode(data_ref->matrix[dataidx][data_ref->cnt]);
-        root->right = initnode(data_ref->matrix[dataidx + twos_a[data_ref->cnt - 1 - seq_ref[level]]][data_ref->cnt]);
+        root->left = initnode(data_ref->matrix[dataidx][data_ref->cnt], cord * 2);
+        root->right = initnode(data_ref->matrix[dataidx + twos_a[data_ref->cnt - 1 - seq_ref[level]]][data_ref->cnt], cord * 2 + 1);
         return;
     } 
-    root->left = initnode(seq_ref[level + 1]);
-    recTree(level + 1, dataidx, root->left);
-    root->right = initnode(seq_ref[level + 1]);
-    recTree(level + 1, dataidx + twos_a[data_ref->cnt - 1 - seq_ref[level]], root->right);
+    root->left = initnode(seq_ref[level + 1], cord * 2);
+    recTree(level + 1, cord * 2, dataidx, root->left);
+    root->right = initnode(seq_ref[level + 1], cord * 2 + 1);
+    recTree(level + 1, cord * 2 + 1, dataidx + twos_a[data_ref->cnt - 1 - seq_ref[level]], root->right);
 }
 
 node_t* createBDD(data_t* data, uint32_t* seq) {
     data_ref = data;
     seq_ref = seq;
 
-    node_t* root = initnode(seq[0]);
-    recTree(0, 0, root);
+    node_t* root = initnode(seq[0], 1);
+    recTree(0, 1, 0, root);
 
     return root;    
 }
 
-void recPrint(node_t* root) {
-    if (root == NULL) return;
-    recPrint(root->left);
-    if (root -> left == NULL && root -> right == NULL) printf("%d ", root->n);
-    recPrint(root->right);
-}
