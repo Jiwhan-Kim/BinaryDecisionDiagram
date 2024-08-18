@@ -1,6 +1,6 @@
 from graphviz import Digraph
 
-def makeGraphToImage(input_file_path):
+def makeGraphToImage(input_file_path, output_file_path):
 
   # 파일 경로
   # file_path = '../Submit/ReducedBDD/output_S1.txt'
@@ -69,4 +69,11 @@ def makeGraphToImage(input_file_path):
     if right != 'X':
       g.edge(node + str(index), right + str(rightIndex), color='red')
 
-  g.render(outputFileName, format='jpeg', cleanup=False)
+  g.render(output_file_path , format='jpeg', cleanup=False)
+
+makeGraphToImage('./output/Carry.txt', './output/Carry')
+makeGraphToImage('./output/S0.txt', './output/S0')
+makeGraphToImage('./output/S1.txt', './output/S1')
+makeGraphToImage('./output/S2.txt', './output/S2')
+makeGraphToImage('./output/S3.txt', './output/S3')
+
