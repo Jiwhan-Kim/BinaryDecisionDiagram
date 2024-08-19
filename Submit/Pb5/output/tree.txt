@@ -1,5 +1,5 @@
 TotalVariables 3
-TotalNodes 1
+TotalNodes 3
 TotalTreeNodes 3
 N a
 B 1

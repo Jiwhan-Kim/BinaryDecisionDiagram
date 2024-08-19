@@ -1,11 +1,15 @@
 # BinaryDecisionDiagram
 
-## How to compile?
-Do `make` on your terminal in the desired project directory.
+## How to run?
+1. Compile and run the algorithms
+    - Type `make` on your terminal in the desired project directory.
+        - If you want to compile the project `./03_ReduceBDD`, `make` on `./03_ReduceBDD`.
+    - Or, compile each `*.c` into the object files `*.o` and link them into executable.
+    - You may change the extension of final executable from `*.out` to `*.exe` if you are running this on windows.
+2. Visualize
+    - Import the environment using `conda`. (Be sure that `conda` is already installed.) `conda env create -f ./environment.yml` to import the environment.
+    - Or, you can manully install the modules using `pip install ...`
 
-If you want to compile the project `./03_ReduceBDD`, `make` on `./03_ReduceBDD`.
-
-If your computer doesn't support `Makefile`, compile each `*.c` into object files (`*.o`) and link them.
 
 ## Project
 ### 01_4bitFA
@@ -37,31 +41,36 @@ Check more infos in PR message (#8).
 ## Submitted Files
 1. 4-bit Full Adder Truth Table
 
-Path: `./Submit/TruthTable/*.txt`
+Path: `./Submit/Pb1`
 
-Compile `main.cpp` using `Makefile` to regenerate the truth tables.
+Result: `./Submit/Pb1/output`
+
+Compile `main.cpp` using `Makefile` and run the executable to regenerate the truth tables.
 
 2. 4-bit Full Adder BDD & Visualization
 
-Code Path: Compile `./03_ReduceBDD/*` and `./main.out ../Submit/TruthTable/S0.txt 0`
+4. Reduction of 4-bit Full Adder BDD
 
-Image Path: `./Submit/OriginalBDD/*.jpeg`
+Path: `./Submit/Pb2`
+
+Result: `./Submit/Pb2/output`
+
+Compile `*.c` and execute `main.out`. It will print the number of the nodes.
+
+Then `python main.py` to make an DAG - Directed Acylclic Graph.
+
 
 3. General BDD & Visualization
 
-Code Path: Compile `./03_ReduceBDD/*` and `./main.out ./input.txt 0`
-
-Image Path: `./Submit/general_OriginalBDD/*.jpeg`
-
-4. Reduction of 4-bit Full Adder BDD
-
-Code Path: Compile `./03_ReduceBDD/*` and `./main.out ../Submit/TruthTable/S0.txt 1`
-
-Image Path: `./Submit/ReducedBDD/*.jpeg`
-
-
 5. Reduction of General BDD
 
-Code Path: Compile `./03_ReduceBDD/*` and `./main.out ./input.txt 1`
+Path: `./Submit/Pb3`
 
-Image Path: `./Submit/general_ReducedBDD/*.jpeg`
+Result: `./Submit/Pb2/output`
+
+Give an input file as `input.txt`. There already exists an `input.txt`, but you can manually change the file.
+
+Compile `*.c` and execute `main.out`. It will print the number of the nodes.
+
+Then `python main.py` to make an DAG - Directed Acylclic Graph.
+
