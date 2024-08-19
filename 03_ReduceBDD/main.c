@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     }
     
     printf("BDD found\n");
-    printf("BDD size: %d\n", getNodes(root));
+    printf("BDD size: %d\n", getFullNodes(root));
     printVisualFormat(root, data, "tree.txt"); 
     return 0;
 }

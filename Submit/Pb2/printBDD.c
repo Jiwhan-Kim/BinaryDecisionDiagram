@@ -1,10 +1,31 @@
 #include "printBDD.h"
+#include <stdint.h>
 
 uint32_t getNodes(node_t* root) {
     if ((root->left == NULL) && (root->right == NULL)) {
         return 0;
     }
     return 1 + getNodes(root->left) + getNodes(root->right);
+}
+
+uint32_t getIsZero(node_t* root) {
+    if ((root->left == NULL) && (root->right == NULL)) {
+        return root->n == 0 ? 1 : 0;
+    }
+    return getIsZero(root->left) | getIsZero(root->right);
+}
+uint32_t getIsOne(node_t* root) {
+    if ((root->left == NULL) && (root->right == NULL)) {
+        return root->n == 1 ? 1 : 0;
+    }
+    return getIsOne(root->left) | getIsOne(root->right);
+}
+
+uint32_t getFullNodes(node_t* root) {
+    uint32_t nodes = getNodes(root);
+    uint32_t isZero = getIsZero(root);
+    uint32_t isOne = getIsOne(root);
+    return nodes + isZero + isOne;
 }
 
 void printBDD(node_t* root) {
@@ -56,7 +77,7 @@ void printVisualFormat(node_t* root, data_t* data, const char* filename) {
     while (format[0].value > twos[two]) two++;
 
     fprintf(fp, "TotalVariables %d\n", data->cnt);
-    fprintf(fp, "TotalNodes %d\n", getNodes(root));
+    fprintf(fp, "TotalNodes %d\n", getFullNodes(root));
     fprintf(fp, "TotalTreeNodes %d\n", twos[two] - 1);
 
     for (int i = 1; i < twos[two]; i++) {

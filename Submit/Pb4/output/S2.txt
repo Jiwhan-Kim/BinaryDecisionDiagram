@@ -1,5 +1,5 @@
 TotalVariables 8
-TotalNodes 31
+TotalNodes 33
 TotalTreeNodes 127
 N a2
 N a1
