@@ -8,7 +8,9 @@
     - You may change the extension of final executable from `*.out` to `*.exe` if you are running this on windows.
 2. Visualize
     - Import the environment using `conda`. (Be sure that `conda` is already installed.) `conda env create -f ./environment.yml` to import the environment.
+    - You may activate the environment by `conda activate BDD`.
     - Or, you can manully install the modules using `pip install ...`
+
 
 
 ## Project
