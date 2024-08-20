@@ -48,7 +48,11 @@ def makeGraphToImage(input_file_path, output_file_path):
   for (index, node) in enumerate(treeNodes):
     if node == 'X':
       continue
-    g.node(node + str(index), node)
+    if node != '1' and node != '0':
+      g.node(node + str(index), node)
+
+  g.node('0', '0')
+  g.node('1', '1')
 
   for (index, node) in enumerate(treeNodes):
     if node == 'X':
@@ -64,12 +68,18 @@ def makeGraphToImage(input_file_path, output_file_path):
     right = treeNodes[rightIndex]
 
     if left != 'X':
-      g.edge(node + str(index), left + str(leftIndex), color='green')
+      if left != '1' and left != '0':
+        g.edge(node + str(index), left + str(leftIndex), color='green')
+      else:
+        g.edge(node + str(index), left, color='green')
 
     if right != 'X':
-      g.edge(node + str(index), right + str(rightIndex), color='red')
+      if right != '1' and right != '0':
+        g.edge(node + str(index), right + str(rightIndex), color='red')
+      else:
+        g.edge(node + str(index), right, color='red')
 
-  g.render(output_file_path , format='jpeg', cleanup=False)
+  g.render(output_file_path, format='jpeg', cleanup=False)
 
 makeGraphToImage('./output/Carry.txt', './output/Carry')
 makeGraphToImage('./output/S0.txt', './output/S0')
