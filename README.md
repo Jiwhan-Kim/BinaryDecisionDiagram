@@ -76,3 +76,6 @@ Compile `*.c` and execute `main.out`. It will print the number of the nodes.
 
 Then `python main.py` to make an DAG - Directed Acylclic Graph.
 
+## COLOR
+
+Red is true. Green is false.
